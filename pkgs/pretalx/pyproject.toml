@@ -1,16 +1,16 @@
 [tool.poetry]
 name = "pretalx_wrapper"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
-authors = ["adisbladis <adisbladis@gmail.com>"]
+authors = ["adisbladis <adisbladis@gmail.com>", "Raito Bezarius <masterancpp@gmail.com>", "Yvan Sraka <yvan@srala.xyz>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.7"
-pretalx = "^1.0"
-psycopg2-binary = "^2.8"
-dj-static = "^0.0.6"
-django-redis = "^4.10"
+python = "^3.9"
+pretalx = "^2.2"
+# psycopg2-binary = "^2.8"
+# dj-static = "^0.0.6"
+# django-redis = "^4.10"
 
 [tool.poetry.dev-dependencies]
 

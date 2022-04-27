@@ -15,7 +15,7 @@ let
   user = "pretix";
   server = {
     bind = "127.0.0.1";
-    port = "8002";
+    port = "8004";
   };
 
   runCommandArgs = {
@@ -55,7 +55,8 @@ let
   };
 
 
-in {
+in
+{
 
   users.users."${user}" = {
     isNormalUser = false;

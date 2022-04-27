@@ -15,12 +15,13 @@ let
   user = "pretalx";
   server = {
     bind = "127.0.0.1";
-    port = "8001";
+    port = "8003";
   };
 
-  environmentFile = pkgs.runCommand "pretalx-environ" {
-    buildInputs = [ pretalx gunicorn ];  # Sets PYTHONPATH in derivation
-  } ''
+  environmentFile = pkgs.runCommand "pretalx-environ"
+    {
+      buildInputs = [ pretalx gunicorn ]; # Sets PYTHONPATH in derivation
+    } ''
     cat > $out <<EOF
     PYTHONPATH=$PYTHONPATH
     EOF
@@ -39,7 +40,8 @@ let
   };
 
 
-in {
+in
+{
 
   users.users."${user}" = {
     isNormalUser = false;

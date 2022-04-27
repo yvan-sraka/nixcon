@@ -1,3 +1,0 @@
-[submodule "poetry2nix"]
-	path = poetry2nix
-	url = https://github.com/adisbladis/poetry2nix.git

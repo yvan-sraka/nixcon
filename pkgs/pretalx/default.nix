@@ -1,31 +1,29 @@
-{
-  pkgs ? import <nixpkgs> { },
-  poetry2nix ? (import ../. { inherit pkgs; }).poetry2nix
+{ pkgs ? import <nixpkgs> { }
+,
 }:
 
 let
-  default = poetry2nix.defaultPoetryOverrides;
-
-  overrides = default // {
-    # Pretalx is missing dependencies upstream
-    pretalx = let
-      overriden = self: super: drv: default.pretalx self super drv;
-    in self: super: drv: drv.overrideAttrs(old: {
+  poetry2nix = pkgs.poetry2nix;
+in
+(poetry2nix.mkPoetryApplication {
+  projectDir = ./.;
+  doCheck = false;
+  overrides = poetry2nix.overrides.withDefaults (self: super: {
+    pretalx = super.pretalx.overrideAttrs (old: {
       nativeBuildInputs = old.nativeBuildInputs ++ [
         pkgs.sass
       ];
     });
 
-    static3 = self: super: drv: drv.overrideAttrs(old: {
-      patches = [ ./static3.patch ];
-    });
+    cssutils = super.cssutils.override {
+      preferWheel = true;
+    };
 
-  };
+    django-scopes = super.django-scopes.override {
+      preferWheel = true;
+    };
 
-in (poetry2nix.mkPoetryPackage {
-  src = ./.;
-  doCheck = false;
-  inherit overrides;
-}).overrideAttrs(old: {
-  inherit (old.passthru.pythonPackages.pretalx) pname name version;
-})
+  });
+})/*.overrideAttrs(old: {
+  inherit (old.passthru.python.pythonPackages.pretalx) pname name version;
+  })*/

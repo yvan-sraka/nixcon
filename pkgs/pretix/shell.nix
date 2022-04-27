@@ -13,7 +13,7 @@ mkShell {
     freetype libjpeg zlib libtiff libwebp tcl lcms2  # Pillow
     libxml2 libxslt  # lxml
     gettext  # Django
-    postgresql_9_6  # Psycopg2
+    postgresql  # Psycopg2
     libffi  # cffi
     openssl  # cryptography
   ];

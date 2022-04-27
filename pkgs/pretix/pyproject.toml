@@ -2,13 +2,13 @@
 name = "pretix_wrapper"
 version = "0.1.0"
 description = ""
-authors = ["adisbladis <adisbladis@gmail.com>"]
+authors = ["adisbladis <adisbladis@gmail.com>", "Yvan Sraka <yvan@srala.xyz>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.7"
-pretix = "^2.8"
-pretix-pages = "^1.2"
+python = "^3.9"
+pretix = "^4.8.0"
+pretix-pages = "^1.4.1"
 
 [tool.poetry.dev-dependencies]
 
